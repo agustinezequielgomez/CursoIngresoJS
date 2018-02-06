@@ -9,7 +9,7 @@ function MostrarAumento()
     importe = document.getElementById("importe").value;
     importe = parseInt(importe);
     calculo = parseInt(calculo);
-    calculo = importe - (importe *25 /100);
+    calculo = importe - (importe * 25 / 100);
     document.getElementById("resultado").value = calculo;
 
 }
