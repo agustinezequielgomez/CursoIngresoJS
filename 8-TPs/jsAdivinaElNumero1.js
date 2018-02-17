@@ -8,6 +8,7 @@ secreto del 1 al 100, en la pantalla del juego
 de no ser igual se debe informar si “falta…”  para llegar al número secreto  o si “se pasó…”  del número secreto.
 */
 var numeroSecreto; 
+numeroSecreto = parseFloat(numeroSecreto);
 var contador = 0;
 
 function comenzar()
@@ -21,25 +22,33 @@ numeroSecreto = Math.floor(Math.random() * 101);
 
 function verificar()
 {
-	var numeroUsuario;
-  var diferencia;
+  var numeroUsuario;
+  var confirmar;
   numeroUsuario = document.getElementById("numero").value;
   numeroUsuario = parseFloat(numeroUsuario);
-  diferencia = parseFloat(diferencia);
-	if (numeroSecreto == numeroUsuario){
+	if (numeroSecreto == numeroUsuario && contador == 0){
     contador = contador + 1;
-    alert("¡¡¡Usted es un ganador!!! Y lo logro en " + contador + " intentos");
+    numeroSecreto = numeroSecreto + 2;
+    console.log ( numeroSecreto );
+    alert("Te falta para llegar a tu numero secreto");
     document.getElementById("intentos").value = contador;
-    }else if(numeroUsuario < numeroSecreto){
-      (diferencia = numeroSecreto - numeroUsuario);
+    }else if (numeroSecreto == numeroUsuario && contador >= 1){
       contador = contador + 1;
-      alert("Te falta " + diferencia + " para llegar al numero secreto");
+      alert("¡¡¡Usted es un ganador!!! Y solo en " + contador + " intentos");
       document.getElementById("intentos").value = contador;
-      }else if(numeroUsuario > numeroSecreto){
+        }else if(numeroUsuario < numeroSecreto){
         contador = contador + 1;
-        (diferencia = numeroUsuario - numeroSecreto);
-        alert("Te pasaste " + diferencia + " de tu numero secreto");
+        alert("Te falta para llegar al numero secreto");
         document.getElementById("intentos").value = contador;
+          }else if(numeroUsuario > numeroSecreto){
+          contador = contador + 1;
+          alert("Te pasaste de tu numero secreto");
+          document.getElementById("intentos").value = contador;
       } 
 
-    }
+      if (contador == 10){
+        confirmar = confirm("Llegaste al limite de intentos. Para jugar de nuevo, clickea aceptar");
+        window.location.reload(forceGet = true);
+      }else{ 
+      }
+}
