@@ -47,8 +47,7 @@ function verificar()
       } 
 
       if (contador == 10){
-        confirmar = confirm("Llegaste al limite de intentos. Para jugar de nuevo, clickea aceptar");
-        window.location.reload(forceGet = true);
+        document.write("LLegaste al limite de intentos.")
       }else{ 
       }
 }
