@@ -28,28 +28,27 @@ function verificar()
   var confirmar;
   numeroUsuario = document.getElementById("numero").value;
   numeroUsuario = parseFloat(numeroUsuario);
-    if (contador >= 10){
-    alert("Te pasaste de 10 intentos");
-      }else if (numeroSecreto == numeroUsuario && contador >= 1){
-        contador = contador + 1;
-        alert("¡¡¡Usted es un ganador!!! Y solo en " + contador + " intentos");
-        document.getElementById("intentos").value = contador;
-          }else if(numeroUsuario < numeroSecreto){
-          contador = contador + 1;
-          alert("Te falta para llegar al numero secreto");
-          document.getElementById("intentos").value = contador;
-            }else if(numeroUsuario > numeroSecreto){
-            contador = contador + 1;
-            alert("Te pasaste de tu numero secreto");
-            document.getElementById("intentos").value = contador;   
-        }
-        while(numeroSecreto == numeroUsuario && contador == 0){
+    while(numeroSecreto == numeroUsuario && contador == 0){
           numeroSecreto = Math.floor(Math.random() * 101);
           console.log ( numeroSecreto );
-          alert("Te falta para llegar a tu numero");
-          contador = contador + 1;
           document.getElementById("intentos").value = contador;
         }
+    if (contador >= 10){
+    alert("Te pasaste de 10 intentos");        
+        }else if (numeroSecreto == numeroUsuario && contador >= 1){
+          contador = contador + 1;
+          alert("¡¡¡Usted es un ganador!!! Y solo en " + contador + " intentos");
+          document.getElementById("intentos").value = contador;
+            }else if(numeroUsuario < numeroSecreto){
+              contador = contador + 1;
+              alert("Te falta para llegar al numero secreto");
+              document.getElementById("intentos").value = contador;
+              }else if(numeroUsuario > numeroSecreto){
+                contador = contador + 1;
+                alert("Te pasaste de tu numero secreto");
+                document.getElementById("intentos").value = contador;   
+        }
+        
   } 
 
 
