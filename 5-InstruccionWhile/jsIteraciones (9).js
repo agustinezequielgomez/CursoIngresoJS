@@ -1,29 +1,34 @@
 function Mostrar()
 {
-
-	var contador=0;
-	// declarar variables
-	
+	var min;
+	var max;
+	var primera = true;
+	var num;
 	var respuesta = true;
-	//Creo un array
-	var numero = [];
-	var numeromax;
-	var numeromin;
-	
-	//Mientras la respuesta sea verdadera se va a ejecutar el While
-	while(respuesta == true)
-	{
-		//Los numeros ingresados por prompt son guardados por separado en el array
-		numero.push(prompt("Ingresa un numero"));
-		console.log ( numero )
-		respuesta = confirm("¿Queres seguir ingresando numeros?"); 
-	}
-		
-		//Entre los numeros del array, el programa selecciona el minimo y maximo
-		numeromax = Math.max.apply(Math, numero);
-		numeromin = Math.min.apply(Math, numero);
-		document.getElementById("maximo").value = numeromax;
-		document.getElementById("minimo").value = numeromin;
+	var contador = 0;
 
+	while(respuesta == true){
+		num = prompt("Ingresa un numero");
+		num = parseInt(num);
+		respuesta = confirm("¿Queres seguir ingresando numeros?");
+
+			while(isNaN(num)){
+				num = prompt("Ingresa un numero valido");
+				num = parseInt(num);
+
+			}
+		if(primera){
+			primera = false;
+			max = num;
+			min = num;
+		}else if(num>max){
+			max = num;
+		}else if(num<min){
+			min = num;
+		}		
+	}
+	
+document.getElementById("maximo").value = max;
+document.getElementById("minimo").value = min;
 
 }//FIN DE LA FUNCIÓN
