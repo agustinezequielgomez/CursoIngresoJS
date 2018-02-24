@@ -9,14 +9,14 @@ while(isNaN(rep)){
     rep = prompt("Ingresa un numero valido");
 }
 
-for(var i = 1; i <= rep; i++){
+for(var i = rep; i > 0; i--){
     if(i%2 == 0){
         console.log ( i )
-        contadorPar = contadorPar + 1;
-        alert("La cantidad de numeros pares es de " + contadorPar);
-    }   
-    
+        contadorPar += contadorPar;
+    }
+
 }
+alert("La cantidad de numeros pares es de " + contadorPar)
 
 
 }//FIN DE LA FUNCIÓN
