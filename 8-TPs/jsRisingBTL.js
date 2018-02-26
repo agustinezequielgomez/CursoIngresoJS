@@ -42,13 +42,22 @@ function ComenzarIngreso ()
  contadorSuelAm = parseInt(contadorSuelAm);
  var sumaSueldoAm = 0;
  sumaSueldoAm = parseInt(sumaSueldoAm);
- var cantPersonasM;
+ var cantPersonasM = 0;
+ cantPersonasM = parseInt(cantPersonasM);
+ var contPersonasM = 0;
+ contPersonasM = parseInt(contPersonasM);
  var edadFemSueldoMax;
+ var sueldoMaxFem;
+ sueldoMaxFem = parseInt(sueldoMaxFem);
+ var bandera3 = true;
  var legajoArg;
  var cantPersonasSueldoNetMProm;
  var cantPersonasSueldoBrutProm;
  
-while(numeroIngresos <= 7){
+
+
+
+while(numeroIngresos <= 0){
 
  edad = prompt("Ingresa tu edad (entre 18 y 90 años)");
  edad = parseInt(edad);
@@ -137,7 +146,6 @@ if(nacionalidad == "N" || nacionalidad == "n" && bandera == true){
     sueldoMaxNac = sueldo;
     }else if(sueldo > sueldoMaxNac && nacionalidad == "N" || nacionalidad == "n"){
         sueldoMaxNac = sueldo;
-    }else{
     }
 
 if(nacionalidad == "A" || nacionalidad == "a" && sexo == "F" || sexo == "f" && bandera2 == true){
@@ -145,7 +153,6 @@ if(nacionalidad == "A" || nacionalidad == "a" && sexo == "F" || sexo == "f" && b
     sueldoMaxFemArg = sueldo;
     }else if(sueldo > sueldoMaxFemArg && nacionalidad == "a" || nacionalidad == "A" && sexo == "F" || sexo == "f"){
         sueldoMaxFemArg = sueldo;
-    }else{
     }
 
 if(sumaSueldoAm >= 0){
@@ -163,6 +170,17 @@ if(sumaSueldoM >= 0){
     }else{
     }
 
+if(sueldo >= 12000 && sexo == "m" || sexo == "M"){
+    cantPersonasM = ++contPersonasM
+}
+
+if(edad > 18 || edad < 90 && bandera3 == true){
+    bandera3 = false;
+    sueldoMaxFem = sueldo;
+    }else if(sueldo > sueldoMaxFem){
+        sueldoMaxFem = sueldo;
+        edadFemSueldoMax = edad;
+    }
 
 
 numeroIngresos = ++numeroIngresos
@@ -172,4 +190,5 @@ console.log ( sueldoMaxFemArg )
 console.log ( sueldoPromAm )
 console.log ( sueldoPromF )
 console.log ( sueldoPromM )
+console.log ( cantPersonasM )
 }

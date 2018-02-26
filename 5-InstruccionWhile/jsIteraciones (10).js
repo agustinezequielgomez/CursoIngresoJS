@@ -70,7 +70,7 @@ function Mostrar()
 		}
 
 		if (num == 0){
-			cantceros = ++contadorcero;
+			cantceros = ++ contadorcero;
 			contadorcero = parseInt(contadorcero);
 		}else{
 		}
