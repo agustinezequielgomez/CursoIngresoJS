@@ -4,6 +4,7 @@ function Mostrar()
 	var contadorpos = 0;
 	var contadorneg = 0;
 	var contadorpar = 0;
+	var contadorcero = 0;
 	//declarar contadores y variables 
 	
 	var respuesta = true;
@@ -68,7 +69,15 @@ function Mostrar()
 		}else{
 		}
 
-}
+		if (num == 0){
+			cantceros = ++contadorcero;
+			contadorcero = parseInt(contadorcero);
+		}else{
+		}
+
+		}
+
+
 document.write ("La suma de los negativos es: " + sumneg);
 document.write ("<br />La suma de los positivos es: " + sumpos);
 document.write ("<br />La cantidad de numeros positivos ingresados es de: " + cantpos);
@@ -76,5 +85,6 @@ document.write ("<br />La cantidad de numeros negativos ingresados es de: " + ca
 document.write ("<br />La cantidad de numeros pares ingresados es de: " + cantpares);
 document.write ("<br />El promedio de numeros positivos es de " + prompos);
 document.write ("<br />El promedio de numeros negativos es de: " + promneg);
-document.write ("<br />La diferencia entre los numeros positivos y negativos ingresados es de: " + dif);	
+document.write ("<br />La diferencia entre los numeros positivos y negativos ingresados es de: " + dif);
+document.write ("<br />La cantidad de ceros ingresados es de: " + contadorcero);	
 }//FIN DE LA FUNCIÓN
