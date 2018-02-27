@@ -26,12 +26,16 @@ function ComenzarIngreso ()
  var sueldoMaxFemArg;
  var sueldoPromF;
  sueldoPromF = parseInt(sueldoPromF);
+ var sueldoPromFNe;
+ sueldoPromFNe = parseInt(sueldoPromFNe);
  var contadorSuelF = 0;
  contadorSuelF = parseInt(contadorSuelF);
  var sumaSueldoF = 0;
  sumaSueldoF = parseInt(sumaSueldoF);
  var sueldoPromM;
  sueldoPromM = parseInt(sueldoPromM);
+ var sueldoPromMNe;
+ sueldoPromMNe = parseInt(sueldoPromMNe);
  var contadorSuelM = 0;
  contadorSuelM = parseInt(contadorSuelM);
  var sumaSueldoM = 0;
@@ -39,6 +43,8 @@ function ComenzarIngreso ()
  var sueldoPromAm;
  sueldoPromAm = parseInt(sueldoPromAm)
  var contadorSuelAm = 0;
+ var sueldoPromAmNe;
+ sueldoPromAmNe = parseInt(sueldoPromAmNe);
  contadorSuelAm = parseInt(contadorSuelAm);
  var sumaSueldoAm = 0;
  sumaSueldoAm = parseInt(sumaSueldoAm);
@@ -51,13 +57,21 @@ function ComenzarIngreso ()
  sueldoMaxFem = parseInt(sueldoMaxFem);
  var bandera3 = true;
  var legajoArg;
+ legajoArg = parseInt(legajoArg);
+ var sueldoLegajo;
+ sueldoLegajo = parseInt(sueldoLegajo);
+ var bandera4 = true;
  var cantPersonasSueldoNetMProm;
+ var contadorPersonasSueldoNet = 0;
+contadorPersonasSueldoNet = parseInt(contadorPersonasSueldoNet);
  var cantPersonasSueldoBrutProm;
+ var contadorPersonasSueldoBrut = 0;
+ contadorPersonasSueldoBrut = parseInt(contadorPersonasSueldoBrut);
  
 
 
 
-while(numeroIngresos <= 0){
+while(numeroIngresos < 7){
 
  edad = prompt("Ingresa tu edad (entre 18 y 90 años)");
  edad = parseInt(edad);
@@ -67,13 +81,14 @@ while(numeroIngresos <= 0){
     }
     document.getElementById("Edad").value = edad;
 
-sexo = prompt("Ingresa tu sexo (F o M)");
-    while(sexo != "F" && sexo !="M" && sexo != "f" && sexo != "m"){
-        sexo = prompt("Ingresa un sexo valido");
+sexo = prompt("Ingresa tu sexo (F o M)").toLowerCase();
+    while(sexo != "f" && sexo != "m"){
+        sexo = prompt("Ingresa un sexo valido").toLowerCase();
     }
-    if(sexo == "M" || sexo == "m"){
+    console.log ( sexo )
+    if(sexo == "m"){
         document.getElementById("Sexo").value = "Masculino";
-            }else if (sexo == "f" || sexo == "F"){
+            }else if (sexo == "f"){
                 document.getElementById("Sexo").value = "Femenino";
             }   
     
@@ -109,10 +124,10 @@ sueldo = prompt("Ingresa tu sueldo bruto (Debe ser mayor a $8000)");
     }
     document.getElementById("Sueldo").value = sueldo;
     
-    if(sueldo > 8000 && sexo == "F" || sexo == "f"){
+    if(sueldo > 8000 && sexo == "f"){
         contadorSuelF = ++contadorSuelF;
         sumaSueldoF = sueldo + sumaSueldoF;
-    }else if (sueldo > 8000 && sexo == "M" || sexo == "m"){
+    }else if (sueldo > 8000 && sexo == "m"){
         contadorSuelM = ++contadorSuelM;
         sumaSueldoM = sueldo + sumaSueldoM;
     }
@@ -127,68 +142,96 @@ legajo = prompt("Ingresa tu numero de legajo");
     }
     document.getElementById("Legajo").value = legajo;
 
-nacionalidad = prompt("Ingresa tu nacionalidad ('A' para Argentinos; 'E' para Extranjeros; 'N' para Nacionalizados)");
-    while(nacionalidad != "A" && nacionalidad != "E" && nacionalidad != "N" && nacionalidad == "a" && nacionalidad == "e" && nacionalidad == "N"){
-        nacionalidad = prompt("Ingresa una nacionalidad valida");
+nacionalidad = prompt("Ingresa tu nacionalidad ('A' para Argentinos; 'E' para Extranjeros; 'N' para Nacionalizados)").toLowerCase();
+    while(nacionalidad !== "a" && nacionalidad !== "e" && nacionalidad !== "n"){
+        nacionalidad = prompt("Ingresa una nacionalidad valida").toLowerCase();
         console.log ( nacionalidad )
     }
     
-    if(nacionalidad == "A" || nacionalidad == "a"){
+    if(nacionalidad == "a"){
         document.getElementById("Nacionalidad").value = "Argentino/a"
-            }else if (nacionalidad == "e" || nacionalidad == "E"){
+            }else if (nacionalidad == "e"){
                 document.getElementById("Nacionalidad").value = "Extranjero/a"
-                    }else if (nacionalidad == "n" || nacionalidad == "N"){
+                    }else if (nacionalidad == "n"){
                         document.getElementById("Nacionalidad").value = "Nacionalizado/a"
                     }
 
-if(nacionalidad == "N" || nacionalidad == "n" && bandera == true){
+if(nacionalidad == "n" && bandera == true){
     bandera = false;
     sueldoMaxNac = sueldo;
-    }else if(sueldo > sueldoMaxNac && nacionalidad == "N" || nacionalidad == "n"){
+    }else if(sueldo > sueldoMaxNac && nacionalidad == "n"){
         sueldoMaxNac = sueldo;
     }
 
-if(nacionalidad == "A" || nacionalidad == "a" && sexo == "F" || sexo == "f" && bandera2 == true){
+if(nacionalidad == "a" && sexo == "f" && bandera2 == true){
     bandera = false;
     sueldoMaxFemArg = sueldo;
-    }else if(sueldo > sueldoMaxFemArg && nacionalidad == "a" || nacionalidad == "A" && sexo == "F" || sexo == "f"){
+    }else if(sueldo > sueldoMaxFemArg && nacionalidad == "a" && sexo == "f"){
         sueldoMaxFemArg = sueldo;
     }
 
 if(sumaSueldoAm >= 0){
     sueldoPromAm = sumaSueldoAm / contadorSuelAm;
+    sueldoPromAmNe = sueldoPromAm * 0.75;
         }else{
         } 
         
 if(sumaSueldoF > 0){
     sueldoPromF = sumaSueldoF / contadorSuelF;
+    sueldoPromFNe = sueldoPromF * 0.75;
     }else{    
     } 
 
 if(sumaSueldoM >= 0){
     sueldoPromM = sumaSueldoM / contadorSuelM;
+    sueldoPromMNe = sueldoPromM * 0.75;
     }else{
     }
 
-if(sueldo >= 12000 && sexo == "m" || sexo == "M"){
+if(sueldo >= 12000 && sexo == "m"){
     cantPersonasM = ++contPersonasM
 }
 
-if(edad > 18 || edad < 90 && bandera3 == true){
+if(sexo == "f" && bandera3 == true){
     bandera3 = false;
     sueldoMaxFem = sueldo;
-    }else if(sueldo > sueldoMaxFem){
+    edadFemSueldoMax = edad;
+    }else if(sueldo > sueldoMaxFem && sexo == "f"){
         sueldoMaxFem = sueldo;
         edadFemSueldoMax = edad;
     }
 
+if(nacionalidad == "a" && bandera4 == true){
+    bandera4 = false;
+    sueldoLegajo = sueldo;
+    legajoArg = legajo;
+    }else if(sueldo < sueldoLegajo && nacionalidad == "a"){
+        sueldoLegajo = sueldo;
+        legajoArg = legajo;
+        console.log ( legajoArg )
+    }
+
+if(sueldo > sueldoPromAmNe){
+    cantPersonasSueldoNetMProm = ++contadorPersonasSueldoNet;
+}
+
+if(sueldo > sueldoPromAm){
+    cantPersonasSueldoBrutProm = ++contadorPersonasSueldoBrut;
+}
 
 numeroIngresos = ++numeroIngresos
 }
-console.log ( sueldoMaxNac )
-console.log ( sueldoMaxFemArg )
-console.log ( sueldoPromAm )
-console.log ( sueldoPromF )
-console.log ( sueldoPromM )
-console.log ( cantPersonasM )
+document.write("El sueldo maximo de las personas nacionalizadas es de es de $" + sueldoMaxNac);
+document.write("<br />El sueldo maximo de las personas de sexo femenino pertenecientes a Argentina es de $" + sueldoMaxFemArg);
+document.write("<br />El sueldo bruto promedio de hombres y mujeres es de $" + sueldoPromAm);
+document.write("<br />El sueldo bruto promedio de las personas de sexo femenino es de $" + sueldoPromF);
+document.write("<br />El sueldo bruto promedio de las personas de sexo masculino es de $" + sueldoPromM);
+document.write("<br />El sueldo neto promedio de hombres y mujeres es de $" + sueldoPromAmNe);
+document.write("<br />El sueldo neto promedio de las personas de sexo femenino es de $" + sueldoPromFNe);
+document.write("<br />El sueldo neto promedio de las personas de sexo masculino es de $" + sueldoPromMNe);
+document.write("<br />La cantidad de personas de sexo masculino con sueldo mayor a $12.000 es de " + cantPersonasM);
+document.write("<br />La edad de la persona de sexo femenino con mayor sueldo es de " + edadFemSueldoMax);
+document.write("<br />El Nº de legajo de la persona argentina de menor sueldo es de " + legajoArg);
+document.write("<br />La cantidad de personas con sueldo Neto mayor al sueldo promedio es de " + cantPersonasSueldoNetMProm);
+document.write("<br />La cantidad de personas con sueldo Bruto mayor al sueldo promedio es de " + cantPersonasSueldoBrutProm);
 }
